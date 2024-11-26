@@ -1,0 +1,34 @@
+﻿﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] | ABC Money Transfer</title>
+    <!-----------------------------------[Favicon]----------------------------------------->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/favicon/favicon-32x32.png">
+    <link rel="manifest" href="~/favicon/site.webmanifest">
+    <!------------------------------------------------------------------------------------->
+    <!------------------------------[Bootstrap CSS]--------------------------------->
+    <link rel="stylesheet" href="~/lib/bootstrap/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="~/css/account.css" />
+</head>
+<body>
+    <script src="/_framework/aspnetcore-browser-refresh.js"></script>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <!-----------------------------[Jquery]-------------------------------->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <!--------------------------[Bootstrap JS]----------------------------->
+    <script src="~/lib/bootstrap/bootstrap.min.js"></script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

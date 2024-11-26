@@ -1,0 +1,81 @@
+﻿@model List<TransactionViewModel>
+
+@{
+    ViewData["Title"] = "Transaction";
+}
+
+<!---------------------------------------------[Main Content Start]---------------------------------------------->
+<div class="shadow shadow-primary shadow-intensity-lg p-3">
+    <h2 class="h5 mb-4 fw-bold">Transactions</h2>
+
+    <!-- Date Range Filter Form -->
+    <div class="mb-4">
+        <form method="get" asp-controller="transaction" asp-action="Index">
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="startDate" class="form-label">From Date</label>
+                    <input type="date" value="@ViewBag.from" id="startDate" name="from" class="form-control" />
+                </div>
+                <div class="col-md-4">
+                    <label for="endDate" class="form-label">To Date</label>
+                    <input type="date" value="@ViewBag.to" id="endDate" name="to" class="form-control" />
+                </div>
+                <div class="col-md-4 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="mb-4">
+        <hr>
+    </div>
+
+    @if (Model.Any())
+    {
+        <div class="card card-body table-wrapper table-responsive">
+            <table class="table table-sm table-hover">
+                <thead class="table-dark border-3 border-dark">
+                    <tr>
+                        <th class="col">Transaction Id</th>
+                        <th class="col">Date</th>
+                        <th class="col">Sender Name</th>
+                        <th class="col">Receiver Name</th>
+                        <th class="col">Bank Name</th>
+                        <th class="col">Account No</th>
+                        <th class="col">Transfer Amount (MYR)</th>
+                        <th class="col">Transfer Rate</th>
+                        <th class="col">Payout Amount (NPR)</th>
+                        <th class="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="table-white border-dark">
+                    @foreach (var item in Model)
+                    {
+                        <tr class="align-middle">
+                            <td>@item.TransactionId</td>
+                            <td>@item.TransactionDate</td> <!-- Formatting Date -->
+                            <td>@item.SenderFullName</td>
+                            <td>@item.ReceiverFullName</td>
+                            <td>@item.BankName</td>
+                            <td>@item.AccountNumber</td>
+                            <td>@item.TransferAmount</td>
+                            <td>@item.TransferRate</td>
+                            <td>@item.PayoutAmount</td>
+                            <td>
+                                <a asp-controller="transaction" asp-action="View" asp-route-id="@item.TransactionId" class="btn btn-sm btn-secondary d-inline-flex align-items-center">
+                                    <i class="fa-solid fa-eye"></i>&nbsp;View
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <p style="text-align:center">No Transactions Found.</p>
+    }
+</div>
+<!----------------------------------------------[Main Content End]----------------------------------------------->

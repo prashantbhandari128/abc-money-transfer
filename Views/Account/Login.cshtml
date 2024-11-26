@@ -1,0 +1,35 @@
+﻿@model LoginModel;
+@{
+    Layout = "_AccountLayout";
+    var returnUrl = ViewData["ReturnUrl"];
+    ViewData["Title"] = "Login";
+}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 col-sm-8">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Login</h3>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <form asp-controller="account" asp-action="login" asp-route-ReturnUrl="@returnUrl">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" asp-for="Username" class="form-control" id="username" placeholder="Enter Username">
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" asp-for="Password" class="form-control" id="password" placeholder="Enter Password">
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                            <br />
+                            <a asp-controller="account" asp-action="register">New here? Register now.</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

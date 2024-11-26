@@ -1,0 +1,56 @@
+﻿@model Transaction
+@{
+    ViewData["Title"] = "Transaction";
+}
+<!---------------------------------------------[Main Content Start]---------------------------------------------->
+<div class="card shadow">
+    <div class="card-header bg-primary text-white">
+        <h4 class="card-title">Transaction Details</h4>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <!-- Sender Details -->
+            <div class="col-md-6 mb-3">
+                <h5 class="text-primary">Sender Information</h5>
+                <p><strong>First Name:</strong> @Model.SenderFirstName</p>
+                <p><strong>Middle Name:</strong> @Model.SenderMiddleName</p>
+                <p><strong>Last Name:</strong> @Model.SenderLastName</p>
+                <p><strong>Address:</strong> @Model.SenderAddress</p>
+                <p><strong>Country:</strong> @Model.SenderCountry</p>
+            </div>
+
+            <!-- Receiver Details -->
+            <div class="col-md-6 mb-3">
+                <h5 class="text-primary">Receiver Information</h5>
+                <p><strong>First Name:</strong> @Model.RecieverFirstName</p>
+                <p><strong>Middle Name:</strong> @Model.RecieverMiddleName</p>
+                <p><strong>Last Name:</strong> @Model.RecieverLastName</p>
+                <p><strong>Address:</strong> @Model.RecieverAddress</p>
+                <p><strong>Country:</strong> @Model.RecieverCountry</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Transaction Details -->
+            <div class="col-md-6 mb-3">
+                <h5 class="text-primary">Transaction Details</h5>
+                <p><strong>Transaction ID:</strong> @Model.TrasactionId</p>
+                <p><strong>Date & Time [UTC]:</strong> @Model.TrasactionDateTime.ToString("F")</p>
+                <p><strong>Transfer Amount [MYR]:</strong> @Model.TransferAmount</p>
+                <p><strong>Transfer Rate:</strong> @Model.TransferRate.ToString("N2")</p>
+                <p><strong>Payout Amount [NPR]:</strong> @Model.PayoutAmount</p>
+            </div>
+
+            <!-- Bank Details -->
+            <div class="col-md-6 mb-3">
+                <h5 class="text-primary">Bank Information</h5>
+                <p><strong>Bank Name:</strong> @Model.BankName</p>
+                <p><strong>Account Number:</strong> @Model.AccountNumber</p>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-muted">
+        <p>Generated on: @DateTime.Now.ToString("F")</p>
+    </div>
+</div>
+<!----------------------------------------------[Main Content End]----------------------------------------------->

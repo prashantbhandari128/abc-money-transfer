@@ -1,0 +1,42 @@
+﻿@model IEnumerable<EcxhangeRateResult.Rate>
+
+@{
+    ViewData["Title"] = "Exchange Rates";
+}
+<!---------------------------------------------[Main Content Start]---------------------------------------------->
+<div class="shadow shadow-primary shadow-intensity-lg p-3">
+    <h2 class="h5 mb-4 fw-bold">Exchange Rates</h2>
+    @if (Model.Any())
+    {
+        <div class="card card-body table-wrapper table-responsive">
+            <table class="table table-sm table-hover">
+                <thead class="table-dark border-3 border-dark">
+                    <tr>
+                        <th class="col">Currency</th>
+                        <th class="col">Unit</th>
+                        <th class="col">Buy</th>
+                        <th class="col">Sell</th>
+                    </tr>
+                </thead>
+                <tbody class="table-white border-dark">
+                    @{
+                        @foreach (var item in Model)
+                        {
+                            <tr class="align-middle">
+                                <td>@item.currency.name</td>
+                                <td>@item.currency.unit</td>
+                                <td>@item.buy</td>
+                                <td>@item.sell</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <p style="text-align:center">Error Loading Data.</p>
+    }
+</div>
+<!----------------------------------------------[Main Content End]----------------------------------------------->
